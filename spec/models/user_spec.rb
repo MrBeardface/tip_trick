@@ -14,6 +14,8 @@ describe User do
  	it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
  	it { should respond_to(:authenticate) }
+  it { should respond_to(:admin) }
+  it { should respond_to(:tips) }
 
 	it { should be_valid }
 
@@ -106,5 +108,20 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+   describe "tips associations" do
+
+    before { @user.save }
+    let!(:older_tips) do
+      FactoryGirl.create(:tips, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_tips) do
+      FactoryGirl.create(:tips, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right tips in the right order" do
+      expect(@user.tips.to_a).to eq [newer_tips, older_tips]
+    end
   end
   
