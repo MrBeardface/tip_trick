@@ -2,11 +2,12 @@ TipTrick::Application.routes.draw do
   get "users/new"
   
   root  'static_pages#home'
-  match '/signup',  to: 'users#new',    via: 'get'
+  match '/signup',  to: 'users#new',            via: 'get'
   match '/home',    to: 'static_pages#home',    via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/search',  to: 'static_pages#search',  via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
