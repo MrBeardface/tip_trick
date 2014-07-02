@@ -1,5 +1,5 @@
 	def full_title(page_title)
-    base_title = "Tips/tricks"
+    base_title = "Tip/trick"
     if page_title.empty?
       base_title
     else

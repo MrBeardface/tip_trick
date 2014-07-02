@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 	#runs this block of code before each example, creating a new @user instance variable and a valid initialization hash.
 	before { @user= User.new(name: "Example User", email: "user@example.com",
-							 password: "foobar", password_confirmation: "foobar")}
+							 						 password: "foobar", password_confirmation: "foobar")}
 	
 	subject { @user }
 
