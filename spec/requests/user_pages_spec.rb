@@ -17,6 +17,21 @@ describe "User pages" do
 		it { should have_content("Sign up")}
 		it { should have_title(full_title("Sign up"))}
 	end
+	describe "profile page" do
+    let(:user) { create(:user) }
+    let!(:t1) { create(:tips, user: user, content: "Foo") }
+    let!(:t2) { create(:tips, user: user, content: "bar") }
+
+    before { visit user_path(user) }
+
+    it { should have_selector('h1',    text: user.name) }
+    it { should have_selector('title', text: user.name) }
+
+    context "must have tips" do
+      it { should have_content(t1.content) }
+      it { should have_content(t2.content) }
+      it { should have_content(user.tips.count) }
+    end
 
 	describe "sign up" do
 		before {visit signup_path}
@@ -51,7 +66,9 @@ describe "User pages" do
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end	
 		end
-	end
+end
+end
+
 
 
 

@@ -1,0 +1,12 @@
+
+<li>
+  <span class="content"><%= tip.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(tip.created_at) %> ago.
+  </span>
+  <% if current_user?(tip.user) %>
+    <%= link_to "delete", tip, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: tip.content %>
+  <% end %>
+</li>

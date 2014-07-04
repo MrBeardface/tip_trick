@@ -82,7 +82,6 @@ describe User do
     before { @user.password_confirmation = "mismatch" }
     it { should_not be_valid }
   	end
-  end
  
  describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
@@ -103,7 +102,7 @@ describe User do
       it { should_not eq user_for_invalid_password }
       specify { expect(user_for_invalid_password).to be_false }
     end
-  end
+  
 
   describe "remember token" do
     before { @user.save }
@@ -122,6 +121,8 @@ describe User do
 
     it "should have the right tips in the right order" do
       expect(@user.tips.to_a).to eq [newer_tips, older_tips]
+      end
     end
   end
+end
   
