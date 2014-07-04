@@ -22,8 +22,7 @@ class TipsController < ApplicationController
 	end
 
 	def show
-  	@user = User.find(params[:id])
-  	render tips_path
+  	@tips = Tip.find(params[:id])
 	end
 
 	def destroy
