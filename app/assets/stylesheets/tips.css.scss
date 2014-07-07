@@ -7,3 +7,15 @@
 	border-bottom: solid 3px #CCC;
 	padding: 3px 0
 }
+
+.hidden {
+	display: none;
+}
+
+.tips.hover {
+	background: #FAFAFA;
+}
+
+.tips.hover .hidden{
+	display: inline;
+}

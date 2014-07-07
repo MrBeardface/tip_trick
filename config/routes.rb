@@ -1,7 +1,7 @@
 TipTrick::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :tips, only: [:new, :create, :show, :index, :destroy, :edit, :update]
+  resources :tips, only: [:new, :create, :show, :index, :destroy, :edit, :update, :proceed]
   
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

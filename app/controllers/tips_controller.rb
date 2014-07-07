@@ -1,8 +1,9 @@
 class TipsController < ApplicationController
 	before_action :signed_in_user, only: [:new, :create, :index, :show, :destroy, :edit, :update]
 	before_action :correct_user,   only: [:destroy, :edit]
-
-	def new
+  before_action :new
+	
+  def new
 		@tips = Tip.new
 	end
 

@@ -1,20 +1,22 @@
+
 <div class="tips">
 <li id="<%= tip.id %>">
- 
-  <span class="user"><strong><%= tip.user.name %></strong>
+  <span class="user"><strong><%= link_to tip.user.name, user_path(tip.user.id) %></strong>
   </span>
+  <%= link_to gravatar_for(current_user, size: 52), current_user %>
 
   <span class="content"><%= link_to tip.content, tip_path(tip) %>
   </span>
   <span class="timestamp">Posted <%= time_ago_in_words(tip.created_at) %> ago.
   </span>
 
-  <% if current_user?(tip.user) %>
+  <span class="hidden">
+    <% if current_user?(tip.user) %>
     <%= link_to "Delete", tip, method: :delete,
                                      data: { confirm: "If you delete this, it's not coming back. Maybe, you would rather edit this tip." },
                                     title: tip.content %> |
     <span class="edit"><%= link_to "Edit", edit_tip_path(tip) %></span>
-  <% end %> |
-  <span class="view"><%= link_to "View #{current_user.name} profile", current_user %></span>
+  <% end %> 
+</span>
 </li>
 </div>
